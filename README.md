@@ -368,3 +368,29 @@ Authorization: Bearer <jwt_token>
 ```
 
 Note: Upon successful logout, the token will be blacklisted and cannot be used for future requests.
+
+---
+
+# /rides/get-fare Endpoint Documentation
+
+### Description
+The `/rides/get-fare` endpoint returns fare estimates for available vehicle types for a trip between a pickup and destination. The logic is implemented in [`rideService.getFare`](Backend/services/ride.service.js) and exposed by [`rideController.getFare`](Backend/controllers/ride.controller.js). The route is defined in [Backend/routes/ride.routes.js](Backend/routes/ride.routes.js) and requires an authenticated user via [`authMiddleWare.authUser`](Backend/middlewares/auth.middleware.js).
+
+### HTTP Method
+GET
+
+### URL
+`/rides/get-fare`
+
+### Query Parameters
+- **pickup** (string, required): Pickup location (minimum 3 characters)
+- **destination** (string, required): Destination location (minimum 3 characters)
+
+Example:
+GET /rides/get-fare?pickup=Main%20St&destination=Central%20Park
+
+### Headers
+- **Authorization**: Bearer token required (JWT)
+  ```
+  Authorization: Bearer <your_jwt_token>
+  ```

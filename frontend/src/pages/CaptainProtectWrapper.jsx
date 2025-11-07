@@ -7,7 +7,7 @@ const CaptainProtectectWrapper = (
   {children}
 ) => {
 
-const token = localStorage.getItem('token')
+const token = localStorage.getItem('captainToken');
   const navigate = useNavigate()
   const {captain ,setCaptain}= useContext(CaptainDataContext)
   const [isLoading , setIsLoading]= useState(true)
